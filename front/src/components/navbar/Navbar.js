@@ -1,4 +1,4 @@
-import { Button, Modal, Form, Row, Col } from "react-bootstrap";
+import { Button, Modal, Form, Row, FormControl } from "react-bootstrap";
 import React, { useState } from "react";
 import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
 import "./navbar.css";
@@ -29,6 +29,11 @@ const Navbar = () => {
       toast.error(error.response.data.message);
     }
   };
+  const handleSend = (e) => {
+    e.preventDefault();
+    toast.success("Check your email box within 48 hours");
+    handleClose();
+  };
 
   return (
     <div className="navbar">
@@ -55,45 +60,39 @@ const Navbar = () => {
             onClick={handleSearch}
           />
         </form>
-        <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal show={show} onHide={handleClose} animation={true} size="xl">
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Test Report</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form>
+            <Form className="p-3">
               <Form.Group
                 as={Row}
-                className="mb-3"
+                className="mb-4 "
                 controlId="formHorizontalReport"
               >
-                <Form.Label column sm={4}>
-                  Report Number
-                </Form.Label>
-                <Col sm={8}>
-                  <Form.Control
-                    type="text"
-                    placeholder="Report Number"
-                    value={info.report_no}
-                    readOnly
-                  />
-                </Col>
+                <Form.Label>Report Number</Form.Label>
+
+                <Form.Control
+                  type="text"
+                  placeholder="Report Number"
+                  value={info.report_no}
+                  readOnly
+                />
               </Form.Group>
               <Form.Group
                 as={Row}
-                className="mb-3"
+                className="mb-4"
                 controlId="formHorizontaldate"
               >
-                <Form.Label column sm={4}>
-                  Date
-                </Form.Label>
-                <Col sm={8}>
-                  <Form.Control
-                    type="date"
-                    placeholder="Report Number"
-                    value={info.createdAt?.split("T")[0]}
-                    readOnly
-                  />
-                </Col>
+                <Form.Label>Date</Form.Label>
+
+                <Form.Control
+                  type="date"
+                  placeholder="Report Number"
+                  value={info.createdAt?.split("T")[0]}
+                  readOnly
+                />
               </Form.Group>
 
               <Form.Group
@@ -101,151 +100,124 @@ const Navbar = () => {
                 className="mb-3"
                 controlId="formHorizontalName"
               >
-                <Form.Label column sm={4}>
-                  Client Name
-                </Form.Label>
-                <Col sm={8}>
-                  <Form.Control
-                    type="text"
-                    placeholder="Client Name"
-                    value={info.name}
-                    readOnly
-                  />
-                </Col>
+                <Form.Label>Client Name</Form.Label>
+
+                <Form.Control
+                  type="text"
+                  placeholder="Client Name"
+                  value={info.name}
+                  readOnly
+                />
               </Form.Group>
               <Form.Group
                 as={Row}
                 className="mb-3"
                 controlId="formHorizontalName"
               >
-                <Form.Label column sm={4}>
-                  Client Address
-                </Form.Label>
-                <Col sm={8}>
-                  <Form.Control
-                    type="text"
-                    placeholder="Client Address"
-                    value={info.address}
-                    readOnly
-                  />
-                </Col>
+                <Form.Label>Client Address</Form.Label>
+
+                <Form.Control
+                  type="text"
+                  placeholder="Client Address"
+                  value={info.address}
+                  readOnly
+                />
               </Form.Group>
               <Form.Group
                 as={Row}
                 className="mb-3"
                 controlId="formHorizontalName"
               >
-                <Form.Label column sm={4}>
-                  Sample Name
-                </Form.Label>
-                <Col sm={8}>
-                  <Form.Control
-                    type="text"
-                    placeholder="Sample Name"
-                    value={info.sample_name}
-                    readOnly
-                  />
-                </Col>
+                <Form.Label>Sample Name</Form.Label>
+
+                <Form.Control
+                  type="text"
+                  placeholder="Sample Name"
+                  value={info.sample_name}
+                  readOnly
+                />
               </Form.Group>
               <Form.Group
                 as={Row}
                 className="mb-3"
                 controlId="formHorizontalName"
               >
-                <Form.Label column sm={4}>
-                  Sample Batch
-                </Form.Label>
-                <Col sm={8}>
-                  <Form.Control
-                    type="number"
-                    placeholder="Sample Batch"
-                    value={info.sample_batch_no}
-                    readOnly
-                  />
-                </Col>
+                <Form.Label>Sample Batch</Form.Label>
+
+                <Form.Control
+                  type="number"
+                  placeholder="Sample Batch"
+                  value={info.sample_batch_no}
+                  readOnly
+                />
               </Form.Group>
               <Form.Group
                 as={Row}
                 className="mb-3"
                 controlId="formHorizontalName"
               >
-                <Form.Label column sm={4}>
-                  Produced Date
-                </Form.Label>
-                <Col sm={8}>
-                  <Form.Control
-                    type="date"
-                    placeholder="Produced Date"
-                    value={info.produced_date?.split("T")[0]}
-                    readOnly
-                  />
-                </Col>
+                <Form.Label>Produced Date</Form.Label>
+
+                <Form.Control
+                  type="date"
+                  placeholder="Produced Date"
+                  value={info.produced_date?.split("T")[0]}
+                  readOnly
+                />
               </Form.Group>
               <Form.Group
                 as={Row}
                 className="mb-3"
                 controlId="formHorizontalName"
               >
-                <Form.Label column sm={4}>
-                  Manufactured
-                </Form.Label>
-                <Col sm={8}>
-                  <Form.Control
-                    type="text"
-                    placeholder=" Manufactured"
-                    value={info.manufactured}
-                    readOnly
-                  />
-                </Col>
+                <Form.Label>Manufactured</Form.Label>
+
+                <Form.Control
+                  type="text"
+                  placeholder=" Manufactured"
+                  value={info.manufactured}
+                  readOnly
+                />
               </Form.Group>
               <Form.Group
                 as={Row}
                 className="mb-3"
                 controlId="formHorizontalName"
               >
-                <Form.Label column sm={4}>
-                  Sgs Sample Number
-                </Form.Label>
-                <Col sm={8}>
-                  <Form.Control
-                    type="text"
-                    placeholder="Sgs Sample Number"
-                    value={info.sgs_sample_no}
-                    readOnly
-                  />
-                </Col>
+                <Form.Label>Sgs Sample Number</Form.Label>
+
+                <Form.Control
+                  type="text"
+                  placeholder="Sgs Sample Number"
+                  value={info.sgs_sample_no}
+                  readOnly
+                />
               </Form.Group>
               <Form.Group
                 as={Row}
                 className="mb-3"
                 controlId="formHorizontalName"
               >
-                <Form.Label column sm={4}>
-                  Date of Sample
-                </Form.Label>
-                <Col sm={8}>
-                  <Form.Control
-                    type="date"
-                    value={info.date_sample?.split("T")[0]}
-                    readOnly
-                  />
-                </Col>
+                <Form.Label>Date of Sample</Form.Label>
+
+                <Form.Control
+                  type="date"
+                  value={info.date_sample?.split("T")[0]}
+                  readOnly
+                />
               </Form.Group>
               <Form.Group
                 as={Row}
                 className="mb-3"
                 controlId="formHorizontalName"
               >
-                <Form.Label column sm={4}>
-                  Testing Period
-                </Form.Label>
-                <Col sm={8}>
-                  <Form.Control
-                    type="date"
-                    value={info.test_period?.split("T")[0]}
-                    readOnly
-                  />
-                </Col>
+                <Form.Label>Testing Period</Form.Label>
+
+                <Form.Control
+                  type="date"
+                  value={info.test_period?.split("T")[0]}
+                  readOnly
+                />
               </Form.Group>
               {/* <Form.Group
               as={Row}
@@ -261,8 +233,19 @@ const Navbar = () => {
             </Form.Group> */}
             </Form>
           </Modal.Body>
-          <Modal.Footer className="d-flex justify-content-between align-items-center">
-            <QR text={"http://www.sgs.br.com/en"} />
+          <Modal.Footer className="d-flex justify-content-between align-items-end">
+            <QR text={"http://www.sgs.br.com"} />
+            <Form className="d-flex w-50">
+              <FormControl
+                size="md"
+                type="email"
+                placeholder="enter your email to receive more details"
+                className="me-1"
+              />
+              <Button variant="success" onClick={handleSend}>
+                Send
+              </Button>
+            </Form>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>

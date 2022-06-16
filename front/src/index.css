@@ -22,9 +22,12 @@ code {
 }
 html {
   color: #000;
-  background: #d5d5d5;
+  background: #d5d5d5 !important;
 }
 .Mcontainer {
   max-width: 1200px;
   margin: 0 auto;
+}
+#root {
+  background: #d5d5d5 !important;
 }
