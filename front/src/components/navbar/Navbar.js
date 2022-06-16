@@ -4,6 +4,7 @@ import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
 import "./navbar.css";
 import axios from "axios";
 import { toast } from "react-toastify";
+import QR from "../../pages/QR";
 const Navbar = () => {
   //modal
   const [show, setShow] = useState(false);
@@ -260,7 +261,8 @@ const Navbar = () => {
             </Form.Group> */}
             </Form>
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer className="d-flex justify-content-between align-items-center">
+            <QR text={"http://www.sgs.br.com/en"} />
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
