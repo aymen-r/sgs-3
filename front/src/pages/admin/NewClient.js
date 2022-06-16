@@ -4,6 +4,7 @@ import { Button, Form, Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const NewClient = () => {
   const [reportNumber, setreportNumber] = useState("");
@@ -32,8 +33,19 @@ const NewClient = () => {
         date_sample: dateSample,
         test_period: testingPeriod,
       });
+      toast.success("new report added");
+      setreportNumber("");
+      setclientName("");
+      setclientAddress("");
+      setsampleName("");
+      setsampleBatch("");
+      setproducedDate("");
+      setManufactured("");
+      setSgsSampleNumber("");
+      setdateSample("");
+      settestingPeriod("");
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
     }
   };
   return (
