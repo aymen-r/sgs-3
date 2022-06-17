@@ -40,11 +40,11 @@ const Navbar = () => {
       <div className="logo">
         <img src="/img/sgs-logo.png" alt="" />
       </div>
-      <div className="dropdown">
+      {/* <div className="dropdown">
         <img src="/img/flag-global-black.png" alt="" />
         <p>Sites e Idiomas</p>
         <AiFillCaretDown />
-      </div>
+      </div> */}
       <div className="search-wrapper">
         <form className="nav-form" onSubmit={handleSearch}>
           <input

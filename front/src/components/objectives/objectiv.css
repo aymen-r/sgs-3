@@ -19,7 +19,7 @@
   color: #fff !important;
   background: #c94c08 !important;
   border-color: #c94c08 !important;
-  webkit-appearance: none;
+  -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
@@ -45,4 +45,15 @@
   border: 2px solid #000;
   background: #000;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .objs {
+    display: flex;
+    flex-direction: column;
+  }
+  .obj {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
 }

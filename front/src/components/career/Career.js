@@ -5,12 +5,11 @@ const Career = () => {
   return (
     <div className="career">
       <div className="frame">
-        <h2>TRABALHE CONOSCO</h2>
+        <h1>WORK WITH US</h1>
         <p>
-          Pesquise vagas existentes, inscreva-se para receber notificações e
-          aplique para oportunidades desejadas.
+          Search current vacancies, sign up for alerts and apply for positions.
         </p>
-        <button>Oportunidades de emprego</button>
+        <button>Job opportunities</button>
       </div>
     </div>
   );

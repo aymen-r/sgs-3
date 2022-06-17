@@ -51,3 +51,35 @@
   border: none;
   outline: none;
 }
+@media only screen and (max-width: 768px) {
+  .logo img {
+    width: 70px;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .menu-nav {
+    display: block !important;
+  }
+}
+
+.menu-nav {
+  margin-top: 1%;
+  list-style: none;
+  display: none;
+  padding: 10px;
+  color: #000;
+  text-align: justify;
+}
+.menu-item-nav {
+  font-size: 14px !important;
+  font-size: 0.875rem !important;
+  line-height: 1.28571em !important;
+
+  padding: 0.625rem 0.2rem;
+
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+.menu-item:hover {
+  background-color: #c94c08;
+}

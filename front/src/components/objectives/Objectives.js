@@ -4,25 +4,23 @@ import "./objectiv.css";
 const Objectives = () => {
   return (
     <div className="obj-numbers">
-      <h2>NOSSO OBJETIVO</h2>
+      <h2>OUR PURPOSE</h2>
       <div className="objs">
         <div className="obj">
-          <h3>Melhor</h3>
-          <p>Ajudamos as empresas a negociar com integridade e confiança</p>
+          <h3>Better</h3>
+          <p>We help businesses trade with integrity and trust</p>
         </div>
         <div className="obj">
-          <h3>Seguro</h3>
-          <p>Nós garantimos a segurança no dia a dia, em casa e no trabalho</p>
+          <h3>Safer</h3>
+          <p>We ensure safety in everyday life, at home and at work</p>
         </div>
         <div className="obj">
-          <h3>Interligados</h3>
-          <p>
-            Ajudamos novas tecnologias a alcançar rapidamente os consumidores
-          </p>
+          <h3>Interconnected</h3>
+          <p>We help new technology to reach consumers quickly</p>
         </div>
       </div>
       <div className="more-links">
-        <button>Saiba Mais</button>
+        <button>Learn More</button>
       </div>
     </div>
   );

@@ -41,3 +41,12 @@
   background: #000;
   cursor: pointer;
 }
+@media only screen and (max-width: 768px) {
+  .career {
+    padding: 3.75rem 0;
+  }
+  .frame {
+    padding: 0;
+    border: none;
+  }
+}

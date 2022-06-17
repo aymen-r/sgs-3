@@ -6,6 +6,7 @@
 }
 
 .solutions h1 {
+  text-align: center;
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 24px;
@@ -16,6 +17,7 @@
   width: 55px;
 }
 .sol-list {
+  padding: 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -28,4 +30,11 @@
 }
 .sol-list li:hover {
   color: #c94c08;
+}
+
+@media only screen and (max-width: 768px) {
+  .sol-list li {
+    padding: 30px;
+    min-width: 100%;
+  }
 }
