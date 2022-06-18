@@ -13,11 +13,37 @@ const Footer = () => {
       <div className="footer1">
         <h1>CONNECT WITH US</h1>
         <div className="social-media">
-          <FaLinkedinIn className="icon-footer" />
-          <FaTwitter className="icon-footer" />
-          <FaFacebookF className="icon-footer" />
-          <FaYoutube className="icon-footer" />
-          <FaInstagram className="icon-footer" />
+          <a
+            href="https://www.linkedin.com/company/sgs"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaLinkedinIn className="icon-footer" />
+          </a>
+          <a href="https://twitter.com/SGS_SA" target="_blank" rel="noreferrer">
+            <FaTwitter className="icon-footer" />
+          </a>
+          <a
+            href="https://www.facebook.com/sgs"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaFacebookF className="icon-footer" />
+          </a>
+          <a
+            href="https://www.youtube.com/user/sgseditor"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaYoutube className="icon-footer" />
+          </a>
+          <a
+            href="https://www.instagram.com/sgsglobal/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaInstagram className="icon-footer" />
+          </a>
         </div>
 
         <p>© 2022 SGS SA</p>
