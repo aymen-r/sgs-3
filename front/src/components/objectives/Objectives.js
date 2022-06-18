@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./objectiv.css";
 
 const Objectives = () => {
@@ -20,7 +21,9 @@ const Objectives = () => {
         </div>
       </div>
       <div className="more-links">
-        <button>Learn More</button>
+        <Link to={"/about-SGS"}>
+          <button>Learn More</button>
+        </Link>
       </div>
     </div>
   );

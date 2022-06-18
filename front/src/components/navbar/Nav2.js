@@ -13,7 +13,8 @@ import {
 import axios from "axios";
 import { toast } from "react-toastify";
 import QR from "../../pages/QR";
-import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
+import { Link } from "react-router-dom";
 const Nav2 = () => {
   //modal
   const [show, setShow] = useState(false);
@@ -46,10 +47,12 @@ const Nav2 = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">
-          <div className="logo">
-            <img src="/img/sgs-logo.png" alt="" />
-          </div>
+        <Navbar.Brand>
+          <Link to={"/"}>
+            <div className="logo">
+              <img src="/img/sgs-logo.png" alt="" />
+            </div>
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -71,10 +74,20 @@ const Nav2 = () => {
               </form>
               <ul className="menu-nav">
                 <li className="menu-item-nav">Our Services</li>
-                <li className="menu-item-nav">Our Company</li>
+                <li className="menu-item-nav">
+                  <Link to={"/about-SGS"}>Our Company</Link>{" "}
+                </li>
+                <li className="menu-item-nav">News, Media & Resources</li>
+                <li className="menu-item-nav">
+                  <Link to={"/contact"}>Contact Us</Link>{" "}
+                </li>
+                <li className="menu-item-nav">
+                  <Link to={"/office"}>SGS Offices & Labs</Link>{" "}
+                </li>
+                {/* <li className="menu-item-nav">Our Company</li>
                 <li className="menu-item-nav">News, Media & Resources</li>
                 <li className="menu-item-nav">Contact Us</li>
-                <li className="menu-item-nav">SGS Offices & Labs</li>
+                <li className="menu-item-nav">SGS Offices & Labs</li> */}
               </ul>
               <Modal
                 show={show}
