@@ -19,7 +19,7 @@ mongoose
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "./build")));
+// app.use(express.static(path.join(__dirname, "./build")));
 
 app.use("/api/client", clientRouter);
 
@@ -31,9 +31,9 @@ app.use((err, req, res, next) => {
 //   app.use(express.static("../front/build"));
 // }
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./build", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./build", "index.html"));
+// });
 
 // heroku start
 
