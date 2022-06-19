@@ -73,13 +73,27 @@ const Cards = () => {
           </div>
           <div className="card4 card-mobile">
             <Link to={"/integrity"}>
-              <img src="/img/card/main-feature-colorful-news.jpg" alt="" />
+              <img src="/img/card/main-feature-connected-dots.jpg" alt="" />
               <div className="card-body4 box">
                 <h5>Integrity at SGS</h5>
-                <p>Sessões de Treinamento | Treinamento</p>
+
                 <p>
                   As leaders in our industry, we hold ourselves to the highest
                   standard of professional behavior.
+                </p>
+              </div>
+            </Link>
+          </div>
+          <div className="card5 card-mobile">
+            <Link to={"/office"}>
+              {" "}
+              <img src="/img/card/main-feature-colorful-news.jpg" alt="" />
+              <div className="card-body3 box">
+                <h5>E Subscriptions</h5>
+                <p>
+                  Keep up-to-date with industry news, events, market trends,
+                  standards and regulations with our email newsletters and
+                  alerts.
                 </p>
               </div>
             </Link>

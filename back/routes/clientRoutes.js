@@ -1,24 +1,50 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import Client from "../models/clientModel.js";
+import sendMail from "../mail.js";
+import { sendMailAdmin, sendMailAdminQuote } from "../mailAdmin.js";
 
 const clientRouter = express.Router();
 
 clientRouter.post(
   "/new",
   expressAsyncHandler(async (req, res) => {
+    const {
+      report_no,
+      name,
+      address,
+      sample_name,
+      sample_batch_no,
+      produced_date,
+      manufactured,
+      sgs_sample_no,
+      date_sample,
+      test_period,
+    } = req.body;
     const newClient = new Client({
-      report_no: req.body.report_no,
-      name: req.body.name,
-      address: req.body.address,
-      sample_name: req.body.sample_name,
-      sample_batch_no: req.body.sample_batch_no,
-      produced_date: req.body.produced_date,
-      manufactured: req.body.manufactured,
-      sgs_sample_no: req.body.sgs_sample_no,
-      date_sample: req.body.date_sample,
-      test_period: req.body.test_period,
+      report_no,
+      name,
+      address,
+      sample_name,
+      sample_batch_no,
+      produced_date,
+      manufactured,
+      sgs_sample_no,
+      date_sample,
+      test_period,
     });
+    sendMailAdmin(
+      report_no,
+      name,
+      address,
+      sample_name,
+      sample_batch_no,
+      produced_date,
+      manufactured,
+      sgs_sample_no,
+      date_sample,
+      test_period
+    );
     const client = await newClient.save();
     res.send({
       _id: client._id,
@@ -43,5 +69,77 @@ clientRouter.get("/:report_no", async (req, res) => {
     res.status(404).send({ message: "report Not Found" });
   }
 });
+
+clientRouter.post("/contact", (req, res) => {
+  const {
+    inquiry,
+    firstName,
+    lastName,
+    companyName,
+    jobTitle,
+    location,
+    phone,
+    email,
+    text,
+  } = req.body;
+  sendMail(
+    email,
+    inquiry,
+    firstName,
+    lastName,
+    companyName,
+    jobTitle,
+    location,
+    phone,
+    text,
+    (err, data) => {
+      if (err) {
+        res.status(500).json({ message: "error" });
+      } else {
+        res.json({ message: "email sent" });
+      }
+    }
+  );
+});
+
+clientRouter.post(
+  "/quote",
+  expressAsyncHandler(async (req, res) => {
+    const {
+      email,
+      report_no,
+      name,
+      address,
+      sample_name,
+      sample_batch_no,
+      produced_date,
+      manufactured,
+      sgs_sample_no,
+      date_sample,
+      test_period,
+    } = req.body;
+
+    sendMailAdminQuote(
+      email,
+      report_no,
+      name,
+      address,
+      sample_name,
+      sample_batch_no,
+      produced_date,
+      manufactured,
+      sgs_sample_no,
+      date_sample,
+      test_period,
+      (err, data) => {
+        if (err) {
+          res.status(500).json({ message: "error" });
+        } else {
+          res.json({ message: "email sent" });
+        }
+      }
+    );
+  })
+);
 
 export default clientRouter;

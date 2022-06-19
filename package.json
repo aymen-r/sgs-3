@@ -1,9 +1,23 @@
 {
+  "name": "sgs2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
   "scripts": {
-    "start": "concurrently \"cd back && npm start\" \"cd front && npm start\"",
+    "build": "cd back && npm install  && cd ../front && npm install && npm run build",
+    "start": "node back/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "concurrently": "^7.2.2"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aymen-r/sgs-3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aymen-r/sgs-3/issues"
+  },
+  "homepage": "https://github.com/aymen-r/sgs-3#readme"
 }

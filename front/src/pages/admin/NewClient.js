@@ -5,6 +5,8 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const NewClient = () => {
   const [reportNumber, setreportNumber] = useState("");
@@ -17,7 +19,9 @@ const NewClient = () => {
   const [SgsSampleNumber, setSgsSampleNumber] = useState("");
   const [dateSample, setdateSample] = useState("");
   const [testingPeriod, settestingPeriod] = useState("");
-
+  // date picker
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [startDate, endDate] = dateRange;
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -31,7 +35,7 @@ const NewClient = () => {
         manufactured: manufactured,
         sgs_sample_no: SgsSampleNumber,
         date_sample: dateSample,
-        test_period: testingPeriod,
+        test_period: dateRange,
       });
       toast.success("new report added");
       setreportNumber("");
@@ -220,10 +224,19 @@ const NewClient = () => {
                 Testing Period
               </Form.Label>
               <Col sm={8}>
-                <Form.Control
+                {/* <Form.Control
                   type="date"
                   value={testingPeriod}
                   onChange={(e) => settestingPeriod(e.target.value)}
+                /> */}
+                <DatePicker
+                  selectsRange={true}
+                  startDate={startDate}
+                  endDate={endDate}
+                  onChange={(update) => {
+                    setDateRange(update);
+                  }}
+                  isClearable={true}
                 />
               </Col>
             </Form.Group>

@@ -11,7 +11,11 @@ const clientSchema = new mongoose.Schema(
     manufactured: { type: String, required: true },
     sgs_sample_no: { type: String, required: true },
     date_sample: { type: Date, required: true },
-    test_period: { type: Date, required: true },
+    test_period: { type: Array, required: true },
+    // test_period: [
+    //   { start_date: { type: Date, required: true } },
+    //   { finish_date: { type: Date, required: true } },
+    // ],
   },
   {
     timestamps: true,

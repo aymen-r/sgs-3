@@ -1,25 +1,41 @@
-import React from "react";
-import {
-  Button,
-  Col,
-  Dropdown,
-  DropdownButton,
-  Form,
-  FormControl,
-  InputGroup,
-  Row,
-  Tab,
-  Tabs,
-} from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Col, Form, Row, Tab, Tabs } from "react-bootstrap";
 import "./contactUs.css";
 import { BsTelephone } from "react-icons/bs";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const ContactUs = () => {
-  const submitHandler = (e) => {
+  const [inquiry, setInquiry] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [companyName, setcompanyName] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+  const [location, setLocation] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [text, setText] = useState("");
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    toast.success("Message Sent");
+    try {
+      const { data } = await axios.post("/api/client/contact", {
+        inquiry,
+        firstName,
+        lastName,
+        companyName,
+        jobTitle,
+        location,
+        phone,
+        email,
+        text,
+      });
+      console.log(data);
+      toast.success("Message Sent");
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   };
   return (
     <div className="contact">
@@ -50,11 +66,17 @@ const ContactUs = () => {
                   Inquiry type*
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Select aria-label="Default select example">
+                  <Form.Select
+                    aria-label="Default select example"
+                    value={inquiry}
+                    onChange={(e) => setInquiry(e.target.value)}
+                  >
                     <option>Select from the list</option>
-                    <option value="brazil">Request information</option>
-                    <option value="2">Request quotation</option>
-                    <option value="3">recruitement & jobs</option>
+                    <option value="Request_information">
+                      Request information
+                    </option>
+                    <option value="Request_quotation">Request quotation</option>
+                    <option value="recruitement">recruitement & jobs</option>
                   </Form.Select>
                 </Col>
               </Form.Group>
@@ -68,7 +90,11 @@ const ContactUs = () => {
                   First name *
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Control type="text" />
+                  <Form.Control
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
                 </Col>
               </Form.Group>
               <Form.Group
@@ -80,7 +106,11 @@ const ContactUs = () => {
                   Last name *
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Control type="text" />
+                  <Form.Control
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
                 </Col>
               </Form.Group>
               <Form.Group
@@ -92,7 +122,11 @@ const ContactUs = () => {
                   Company name
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Control type="text" />
+                  <Form.Control
+                    type="text"
+                    value={companyName}
+                    onChange={(e) => setcompanyName(e.target.value)}
+                  />
                 </Col>
               </Form.Group>
               <Form.Group
@@ -104,7 +138,11 @@ const ContactUs = () => {
                   Job Title
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Control type="number" />
+                  <Form.Control
+                    type="text"
+                    value={jobTitle}
+                    onChange={(e) => setJobTitle(e.target.value)}
+                  />
                 </Col>
               </Form.Group>
               <Form.Group
@@ -116,12 +154,11 @@ const ContactUs = () => {
                   Your location*
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Select aria-label="Default select example">
-                    <option>Select from the list</option>
-                    <option value="brazil">Brazil</option>
-                    <option value="2">UAE</option>
-                    <option value="3">Tunisia</option>
-                  </Form.Select>
+                  <Form.Control
+                    type="text"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                  />
                 </Col>
               </Form.Group>
               <Form.Group
@@ -133,7 +170,11 @@ const ContactUs = () => {
                   Phone
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Control type="number" />
+                  <Form.Control
+                    type="number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
                 </Col>
               </Form.Group>
               <Form.Group
@@ -145,7 +186,11 @@ const ContactUs = () => {
                   Email*
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Control type="email" />
+                  <Form.Control
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </Col>
               </Form.Group>
               <Form.Group
@@ -158,9 +203,11 @@ const ContactUs = () => {
                 </Form.Label>
                 <Col sm={8}>
                   <textarea
-                    class="form-control"
+                    className="form-control"
                     id="textAreaExample1"
                     rows="4"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
                   ></textarea>
                 </Col>
               </Form.Group>

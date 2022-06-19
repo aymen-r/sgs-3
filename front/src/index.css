@@ -39,3 +39,12 @@ a {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
+.react-datepicker__input-container input {
+  width: 100%;
+  border: none;
+  height: 100%;
+  padding: 8px 10px;
+}
+.react-datepicker-ignore-onclickoutside {
+  width: 100%;
+}

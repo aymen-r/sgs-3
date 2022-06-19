@@ -10,10 +10,13 @@ import {
   Row,
   FormControl,
 } from "react-bootstrap";
+// import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import axios from "axios";
 import { toast } from "react-toastify";
 import QR from "../../pages/QR";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineMail, AiOutlineSearch } from "react-icons/ai";
 import { Link } from "react-router-dom";
 const Nav2 = () => {
   //modal
@@ -23,6 +26,8 @@ const Nav2 = () => {
   //search
   const [search, setSearch] = useState("");
   const [info, setInfo] = useState({});
+
+  const [emailSender, setEmailSender] = useState("");
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -41,9 +46,21 @@ const Nav2 = () => {
   };
   const handleSend = (e) => {
     e.preventDefault();
-    toast.success("Check your email box within 48 hours");
+    try {
+      const { data } = axios.post("/api/client/quote", {
+        email: emailSender,
+        ...info,
+      });
+      console.log({ email: emailSender, ...info });
+      toast.success("Check your email box within 48 hours");
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+    setEmailSender("");
+    setSearch("");
     handleClose();
   };
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -54,7 +71,12 @@ const Nav2 = () => {
             </div>
           </Link>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <div className="nav-right-mobile d-flex justify-content-between align-items-center">
+          <Link to={"/contact"}>
+            <AiOutlineMail className="mail-icon" />
+          </Link>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        </div>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto  w-100  justify-content-end">
             <div className="search-wrapper">
@@ -247,36 +269,34 @@ const Nav2 = () => {
                     >
                       <Form.Label>Testing Period</Form.Label>
 
-                      <Form.Control
-                        type="date"
-                        value={info.test_period?.split("T")[0]}
-                        readOnly
-                      />
+                      {info.test_period && (
+                        <Form.Control
+                          value={`${info?.test_period[0].split("T")[0]} ---> ${
+                            info?.test_period[1].split("T")[0]
+                          }`}
+                          readOnly
+                        />
+                      )}
                     </Form.Group>
-                    {/* <Form.Group
-              as={Row}
-              className="mb-3"
-              controlId="formHorizontalName"
-            >
-              <Form.Label column sm={4}>
-                Test(s) required
-              </Form.Label>
-              <Col sm={8}>
-                <Form.Control type="text" placeholder="tests" />
-              </Col>
-            </Form.Group> */}
                   </Form>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-between align-items-end">
                   <QR text={"http://www.sgs.br.com"} />
                   <Form className="d-flex w-50">
                     <FormControl
+                      required
                       size="md"
                       type="email"
                       placeholder="enter your email to receive more details"
                       className="me-1"
+                      value={emailSender}
+                      onChange={(e) => setEmailSender(e.target.value)}
                     />
-                    <Button variant="success" onClick={handleSend}>
+                    <Button
+                      variant="success"
+                      type="submit"
+                      onClick={handleSend}
+                    >
                       Send
                     </Button>
                   </Form>

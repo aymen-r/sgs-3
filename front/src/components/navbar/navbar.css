@@ -46,17 +46,30 @@
   appearance: none;
   -webkit-appearance: none;
 }
+.nav-right-mobile {
+  width: 20%;
+}
+.mail-icon {
+  font-size: 30px;
+  display: none;
+}
 
 .search-wrapper .nav-form .input-nav:focus {
   border: none;
   outline: none;
 }
 @media only screen and (max-width: 768px) {
+  .nav-right-mobile {
+    width: 33%;
+  }
   .logo img {
     width: 70px;
   }
 }
 @media only screen and (max-width: 950px) {
+  .mail-icon {
+    display: block;
+  }
   .menu-nav {
     display: block !important;
   }
