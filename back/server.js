@@ -11,7 +11,7 @@ mongoose
     console.log("connected to db success");
   })
   .catch((err) => {
-    console.log(err.message);
+    console.log("err.message");
   });
 
 // const __filename = fileURLToPath(import.meta.url);

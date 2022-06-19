@@ -293,7 +293,7 @@ const Nav2 = () => {
                       onChange={(e) => setEmailSender(e.target.value)}
                     />
                     <Button
-                      variant="success"
+                      variant="primary"
                       type="submit"
                       onClick={handleSend}
                     >

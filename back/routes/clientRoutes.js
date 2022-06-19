@@ -1,8 +1,8 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import Client from "../models/clientModel.js";
-import sendMail from "../mail.js";
-import { sendMailAdmin, sendMailAdminQuote } from "../mailAdmin.js";
+// import sendMail from "../mailContact.js";
+import { sendMailSales, sendMailSalesQuote } from "../mailSales.js";
 
 const clientRouter = express.Router();
 
@@ -33,7 +33,7 @@ clientRouter.post(
       date_sample,
       test_period,
     });
-    sendMailAdmin(
+    sendMailSales(
       report_no,
       name,
       address,
@@ -119,7 +119,7 @@ clientRouter.post(
       test_period,
     } = req.body;
 
-    sendMailAdminQuote(
+    sendMailSalesQuote(
       email,
       report_no,
       name,
